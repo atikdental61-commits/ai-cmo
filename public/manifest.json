@@ -1,0 +1,17 @@
+{
+  "name": "Alinin AI CMO — Your AI Marketing Team",
+  "short_name": "Alinin",
+  "description": "Alinin AI CMO: SEO, content, Reddit, X, Hacker News, and AI visibility — automated.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#8b5cf6",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
