@@ -4,6 +4,9 @@
   "version": "1.0.0",
   "description": "Alinin AI CMO — 6 agents, 1 dashboard. Automates SEO, content, Reddit, X, HN, and lead generation.",
   "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",

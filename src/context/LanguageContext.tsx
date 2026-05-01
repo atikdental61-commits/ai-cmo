@@ -34,6 +34,11 @@ export const translations: Translations = {
   fullyAutonomous: { tr: 'tamamen otonom', en: 'fully autonomous', es: 'totalmente autónomo' },
   traditionalCost: { tr: 'Geleneksel pazarlama ekibi maliyeti', en: 'Traditional marketing team cost', es: 'Costo del equipo de marketing tradicional' },
   withAiCmo: { tr: 'Alinin AI CMO ile', en: 'With Alinin AI CMO', es: 'Con Alinin AI CMO' },
+  demoModeBanner: {
+    tr: 'Demo modu: Gerçek hesaplar için Vercel’e VITE_SUPABASE_URL ve VITE_SUPABASE_ANON_KEY ekleyin; ardından Redeploy.',
+    en: 'Demo mode: Add VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY in Vercel → Environment Variables, then Redeploy for real accounts.',
+    es: 'Modo demo: añade VITE_SUPABASE_URL y VITE_SUPABASE_ANON_KEY en Vercel y vuelve a desplegar.',
+  },
   // Dashboard
   totalTasks: { tr: 'Günlük Toplam Görev', en: 'Total Tasks Today', es: 'Tareas totales hoy' },
   opportunitiesFound: { tr: 'Bulunan Fırsatlar', en: 'Opportunities Found', es: 'Oportunidades encontradas' },

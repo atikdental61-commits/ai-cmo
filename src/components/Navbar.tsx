@@ -7,9 +7,10 @@ interface NavbarProps {
   onSignIn?: () => void;
   onSignUp?: () => void;
   onOpenDashboard?: () => void;
+  showSetupBanner?: boolean;
 }
 
-export default function Navbar({ onSignIn, onSignUp, onOpenDashboard }: NavbarProps) {
+export default function Navbar({ onSignIn, onSignUp, onOpenDashboard, showSetupBanner }: NavbarProps) {
   const { language, setLanguage, t } = useLanguage();
   const { user, signOut } = useAuth();
   const [scrolled, setScrolled] = useState(false);
@@ -29,6 +30,11 @@ export default function Navbar({ onSignIn, onSignUp, onOpenDashboard }: NavbarPr
           : 'bg-transparent'
       }`}
     >
+      {showSetupBanner && (
+        <div className="bg-amber-500/15 border-b border-amber-500/25 text-amber-100/95 text-[11px] sm:text-xs text-center leading-snug py-2 px-3">
+          {t('demoModeBanner')}
+        </div>
+      )}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center gap-2">

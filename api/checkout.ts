@@ -11,6 +11,12 @@ export default async function handler(req: any, res: any) {
   if (req.method !== 'POST') return res.status(405).end();
 
   const { priceId, email, plan } = req.body;
+  // Vercel serverless may not send Origin; use request host or VERCEL_URL
+  const publicOrigin =
+    (typeof req.headers.origin === 'string' && req.headers.origin) ||
+    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : '') ||
+    'http://localhost:5173';
+
   const stripeSecret = process.env.STRIPE_SECRET_KEY;
 
   if (!stripeSecret) {
@@ -23,8 +29,8 @@ export default async function handler(req: any, res: any) {
     params.append('payment_method_types[]', 'card');
     params.append('line_items[0][price]', priceId);
     params.append('line_items[0][quantity]', '1');
-    params.append('success_url', `${req.headers.origin}/?success=true&plan=${plan}`);
-    params.append('cancel_url', `${req.headers.origin}/?canceled=true`);
+    params.append('success_url', `${publicOrigin}/?success=true&plan=${plan}`);
+    params.append('cancel_url', `${publicOrigin}/?canceled=true`);
     if (email) params.append('customer_email', email);
 
     const stripeRes = await fetch('https://api.stripe.com/v1/checkout/sessions', {

@@ -20,7 +20,7 @@ import { AuthProvider, useAuth } from './context/AuthContext';
 type AppRoute = 'home' | 'dashboard' | 'legal' | 'email-confirm' | 'not-found';
 
 function AppContent() {
-  const { user, loading } = useAuth();
+  const { user, loading, isConfigured } = useAuth();
   const [route, setRoute] = useState<AppRoute>('home');
   const [legalPageType, setLegalPageType] = useState<'privacy' | 'terms' | 'cookies'>('privacy');
   const [websiteUrl, setWebsiteUrl] = useState('');
@@ -135,8 +135,13 @@ function AppContent() {
         onSignIn={openSignIn}
         onSignUp={openSignUp}
         onOpenDashboard={() => user ? navigateTo('dashboard') : openSignUp()}
+        showSetupBanner={!isConfigured}
       />
-      <HeroSection onAnalyze={handleAnalyze} isAnalyzing={isAnalyzing} />
+      <HeroSection
+        onAnalyze={handleAnalyze}
+        isAnalyzing={isAnalyzing}
+        showSetupBanner={!isConfigured}
+      />
       <Features />
       <Testimonials />
       <Pricing onGetStarted={handleGetStarted} />

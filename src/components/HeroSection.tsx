@@ -5,9 +5,11 @@ import { useLanguage } from '../context/LanguageContext';
 interface HeroSectionProps {
   onAnalyze: (url: string) => void;
   isAnalyzing: boolean;
+  /** Extra top offset when nav shows setup banner */
+  showSetupBanner?: boolean;
 }
 
-export default function HeroSection({ onAnalyze, isAnalyzing }: HeroSectionProps) {
+export default function HeroSection({ onAnalyze, isAnalyzing, showSetupBanner }: HeroSectionProps) {
   const { t } = useLanguage();
   const [url, setUrl] = useState('');
 
@@ -19,7 +21,7 @@ export default function HeroSection({ onAnalyze, isAnalyzing }: HeroSectionProps
   };
 
   return (
-    <section className="relative pt-32 pb-20 overflow-hidden">
+    <section className={`relative ${showSetupBanner ? 'pt-40' : 'pt-32'} pb-20 overflow-hidden`}>
       {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-violet-500/10 blur-[120px]" />

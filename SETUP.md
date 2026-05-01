@@ -2,6 +2,19 @@
 
 This guide walks you through enabling all real backend integrations.
 
+## Vercel — production checklist (do in order)
+
+1. **Connect GitHub** → Import repo → first deploy (static site works; auth runs in **demo mode** until Supabase is set).
+2. **Project → Settings → Environment Variables** — add only what you need (see sections below). Scope: **Production** (and **Preview** if you use preview deployments).
+3. **Redeploy** after every env change: **Deployments** → latest → **⋯** → **Redeploy**.
+4. **Supabase** (if using real auth): Dashboard → **Authentication → URL Configuration** → set **Site URL** to `https://YOUR-APP.vercel.app` and add the same origin under **Redirect URLs**.
+5. **Stripe** (if using checkout): Use **full URLs** for client env vars, e.g. `VITE_STRIPE_CHECKOUT_ENDPOINT=https://YOUR-APP.vercel.app/api/checkout`. Create a webhook pointing to `https://YOUR-APP.vercel.app/api/stripe-webhook` and set `STRIPE_WEBHOOK_SECRET` in Vercel.
+6. **Node**: This repo targets **Node 20** (`package.json` `engines`, `vercel.json`). Vercel will pick it up automatically.
+
+Until `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` are set, the UI shows a **demo mode** banner and sign-in uses local mock storage — suitable for demos only.
+
+---
+
 ## Quick Start
 
 ```bash
